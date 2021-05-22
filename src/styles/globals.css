@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* tail wind css allows you to add custom styling to your components
+siply type @layer then name of the file that you want to apply custom styling to, in our case
+components and then the name of the attribute, in my case "link" then pass an object of "@apply" and thn the css property */
+
+@layer components {
+    .link {
+        @apply cursor-pointer hover:underline
+    }
+   
+}
