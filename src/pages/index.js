@@ -3,25 +3,25 @@ import ProductFeed from "../app/ProductFeed";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 
-export default function Home( {products} ) {
+export default function Home({ products }) {
   return (
     <div bg-grey-100>
       <Head>
         <title>Amazon 2.0</title>
       </Head>
-      <Header/>
+      <Header />
 
       <main className="max-w-screen-2xl mx-auto">
 
         {/* Banner */}
-        <Banner/>
+        <Banner />
 
         {/* product Feed */}
-        <ProductFeed products={products}/>
-         
+        <ProductFeed products={products} />
+
       </main>
 
-       
+
       {/* header*/}
       {/* banner */}
     </div>
@@ -33,13 +33,11 @@ export default function Home( {products} ) {
 
 export async function getServerSideProps(context) {
   const products = await fetch("https://fakestoreapi.com/products")
-  .then((res) => res.json())
-  
-
+    .then((res) => res.json());
   return {
-      props: {
-          products,
-      },
+    props: {
+      products,
+    },
   };
 
 }
