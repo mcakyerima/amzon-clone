@@ -12,11 +12,15 @@ module.exports = {
           light: "#232F3E",
           DEFAULT: "#131921",
         },
+        bacground_color: {
+          light: "#E5E7EB",
+        },
       },
     },
   },
   variants: {
     extend: {},
   },
+  //line clamp is an extension  that is used to truncate a long text
   plugins: [require("@tailwindcss/line-clamp")],
 };

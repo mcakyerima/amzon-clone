@@ -1,11 +1,11 @@
 import Head from "next/head";
-import ProductFeed from "../app/ProductFeed";
+import ProductFeed from "../components/ProductFeed";
 import Banner from "../components/Banner";
 import Header from "../components/Header";
 
 export default function Home({ products }) {
   return (
-    <div bg-grey-100>
+    <div className="bg-gray-300">
       <Head>
         <title>Amazon 2.0</title>
       </Head>
