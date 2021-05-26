@@ -8,7 +8,7 @@ function Header({ products }) {
     return (
         <header>
             {/* top nav */}
-            <div className="flex items-center bg-amazon_blue p-1 flex-grow py-2">
+            <div className="fixed w-full top-0 flex items-center bg-amazon_blue p-1 flex-grow py-2 z-50">
                 <div className="mt-2 flex items-center flex-grow md:flex-grow-0 ">
                     <Image
                         src='https://links.papareact.com/f90'
@@ -47,7 +47,7 @@ function Header({ products }) {
 
             {/* button nav */}
 
-            <div className="flex items-center space-x-3 bg-amazon_blue-light text-white">
+            <div className="fixed w-full z-50 my-16 flex items-center space-x-3 bg-amazon_blue-light text-white">
                 <p className="flex items-center">
                     <MenuIcon className="h-6 mr-1" />
                     All
