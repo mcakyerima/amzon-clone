@@ -47,7 +47,7 @@ function Header({ products }) {
 
             {/* button nav */}
 
-            <div className="fixed w-full z-50 my-16 flex items-center space-x-3 bg-amazon_blue-light text-white">
+            <div className="fixed w-full z-50 my-16 flex items-center space-x-3 bg-amazon_blue-light text-white mb-6">
                 <p className="flex items-center">
                     <MenuIcon className="h-6 mr-1" />
                     All
