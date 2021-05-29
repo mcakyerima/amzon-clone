@@ -1,16 +1,24 @@
 import Image from 'next/image';
+import { signIn, signOut, useSession } from "next-auth/client"
 import {
     MenuIcon,
     SearchIcon,
     ShoppingCartIcon,
-} from "@heroicons/react/outline"
+} from "@heroicons/react/outline";
+import { useRouter } from 'next/router';
+
 function Header({ products }) {
+    const [session] = useSession();
+    //call the inbuilt rooter hook in next.js
+    const router = useRouter();
+
     return (
-        <header>
+        <header className="fixed top-0 w-full z-50">
             {/* top nav */}
-            <div className="fixed w-full top-0 flex items-center bg-amazon_blue p-1 flex-grow py-2 z-50">
+            <div className="relative w-full top-0 flex items-center bg-amazon_blue p-1 flex-grow py-2 z-50 mb-3.5">
                 <div className="mt-2 flex items-center flex-grow md:flex-grow-0 ">
                     <Image
+                        onClick={() => router.push('/')}
                         src='https://links.papareact.com/f90'
                         width={140}
                         height={40}
@@ -28,15 +36,17 @@ function Header({ products }) {
 
                 {/* Right Container */}
                 <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
-                    <div className="link">
-                        <p>Hello Mc Fresh</p>
+                    <div onClick={!session ? signIn : signOut} className="link">
+                        <p>
+                            {!session ? `Sign In` : `Hello ${session.user.name}`}
+                        </p>
                         <p className="font-extrabold md:text-sm ">Account & List</p>
                     </div>
                     <div className="link">
                         <p>Returns</p>
                         <p className="font-extrabold md:text-sm">& orders </p>
                     </div>
-                    <div className=" relative link flex items-center ">
+                    <div  className="relative link flex items-center ">
                         <spans className="absolute top-0 right-0 bg-yellow-400 h-4 w-4 object-fill rounded-full text-center md:right-10  font-bold text-black">0</spans>
                         <ShoppingCartIcon className="h-10" />
                         <p className=" hidden md:inline font-extrabold md:text-sm mt-2">Basket</p>
@@ -47,7 +57,7 @@ function Header({ products }) {
 
             {/* button nav */}
 
-            <div className="fixed w-full z-50 my-16 flex items-center space-x-3 bg-amazon_blue-light text-white mb-6">
+            <div className="fixed flex my-40 w-full z-50  items-center space-x-3 bg-amazon_blue-light text-white mb-10">
                 <p className="flex items-center">
                     <MenuIcon className="h-6 mr-1" />
                     All
