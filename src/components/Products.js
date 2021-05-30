@@ -2,17 +2,22 @@ import { useState } from "react";
 import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
+import { useDispatch } from "react-redux";
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
 
 function Products({ id, title, price, description, category, image }) {
+    // hook dispatch to dispatcher
+    const dispatch = useDispatch();
+
     // create a star state for randon star rating generation
     const [rating] = useState(
         Math.floor(Math.random() * (MAX_RATING - MIN_RATING + 1)) + MIN_RATING
     );
     //generate values for hasprime component
     const [hasPrime] = useState(Math.random() < 0.5)
+
     return (
         <div className="relative flex flex-col m-5  bg-white  z-30 p-10 shadow-lg  transform  cursor-pointer">
             <p className="absolute top-2 right-2 text-xs italic text-gray-400">{category}</p>
@@ -41,7 +46,7 @@ function Products({ id, title, price, description, category, image }) {
                     <p className="text-xs text-grey-500">Free Next-day Delivery</p>
                 </div>
             )}
-            <button className=" mt-auto button">Add to Basket</button>
+            <button onclick={addItemToBasket} className=" mt-auto button">Add to Basket</button>
 
 
         </div>

@@ -15,7 +15,7 @@ function Header({ products }) {
     return (
         <header className="fixed top-0 w-full z-50">
             {/* top nav */}
-            <div className="relative w-full top-0 flex items-center bg-amazon_blue p-1 flex-grow py-2 z-50 mb-3.5">
+            <div className="relative w-full top-0 flex items-center bg-amazon_blue p-1 flex-grow py-2 z-50">
                 <div className="mt-2 flex items-center flex-grow md:flex-grow-0 ">
                     <Image
                         onClick={() => router.push('/')}
@@ -46,7 +46,9 @@ function Header({ products }) {
                         <p>Returns</p>
                         <p className="font-extrabold md:text-sm">& orders </p>
                     </div>
-                    <div  className="relative link flex items-center ">
+                    <div
+                        className="relative link flex items-center "
+                        onClick={() => router.push("./checkout")}>
                         <spans className="absolute top-0 right-0 bg-yellow-400 h-4 w-4 object-fill rounded-full text-center md:right-10  font-bold text-black">0</spans>
                         <ShoppingCartIcon className="h-10" />
                         <p className=" hidden md:inline font-extrabold md:text-sm mt-2">Basket</p>
@@ -57,7 +59,7 @@ function Header({ products }) {
 
             {/* button nav */}
 
-            <div className="fixed flex my-40 w-full z-50  items-center space-x-3 bg-amazon_blue-light text-white mb-10">
+            <div className="flex w-full z-50  items-center space-x-3 bg-amazon_blue-light text-white">
                 <p className="flex items-center">
                     <MenuIcon className="h-6 mr-1" />
                     All
