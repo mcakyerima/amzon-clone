@@ -3,6 +3,7 @@ import Image from "next/image";
 import { StarIcon } from "@heroicons/react/solid";
 import Currency from "react-currency-formatter";
 import { useDispatch } from "react-redux";
+import { addToBasket } from "../slices/basketSlice";
 
 const MAX_RATING = 5;
 const MIN_RATING = 1;
@@ -17,6 +18,18 @@ function Products({ id, title, price, description, category, image }) {
     );
     //generate values for hasprime component
     const [hasPrime] = useState(Math.random() < 0.5)
+    const addItemToBasket = () => {
+        const product = {
+            id,
+            price,
+            description,
+            category,
+            image
+        };
+
+        // Sending the product as an action to the REDUX store which is the basket slice
+        dispatch(addToBasket(product))
+    }
 
     return (
         <div className="relative flex flex-col m-5  bg-white  z-30 p-10 shadow-lg  transform  cursor-pointer">
@@ -46,7 +59,7 @@ function Products({ id, title, price, description, category, image }) {
                     <p className="text-xs text-grey-500">Free Next-day Delivery</p>
                 </div>
             )}
-            <button onclick={addItemToBasket} className=" mt-auto button">Add to Basket</button>
+            <button onClick={addItemToBasket} className=" mt-auto button">Add to Basket</button>
 
 
         </div>

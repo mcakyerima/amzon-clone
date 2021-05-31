@@ -6,11 +6,14 @@ import {
     ShoppingCartIcon,
 } from "@heroicons/react/outline";
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import { selectItems } from '../slices/basketSlice';
 
 function Header({ products }) {
     const [session] = useSession();
     //call the inbuilt rooter hook in next.js
     const router = useRouter();
+    const item = useSelector(selectItems);
 
     return (
         <header className="fixed top-0 w-full z-50">
@@ -49,7 +52,7 @@ function Header({ products }) {
                     <div
                         className="relative link flex items-center "
                         onClick={() => router.push("./checkout")}>
-                        <spans className="absolute top-0 right-0 bg-yellow-400 h-4 w-4 object-fill rounded-full text-center md:right-10  font-bold text-black">0</spans>
+                        <spans className="absolute top-0 right-0 bg-yellow-400 h-4 w-4 object-fill rounded-full text-center md:right-10  font-bold text-black">{item.length}</spans>
                         <ShoppingCartIcon className="h-10" />
                         <p className=" hidden md:inline font-extrabold md:text-sm mt-2">Basket</p>
                     </div>
