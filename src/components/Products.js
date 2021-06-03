@@ -21,6 +21,7 @@ function Products({ id, title, price, description, category, image }) {
     const addItemToBasket = () => {
         const product = {
             id,
+            title,
             price,
             description,
             category,
