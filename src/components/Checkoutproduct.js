@@ -27,15 +27,16 @@ function Checkoutproduct({
                 <p className="text-xs my-2  line-clamp-3">{description}</p>
                 <Currency quantity={price} currency="NGN" />
 
-                {hasPrime &&
+                {hasPrime && (
                     <div className="flex items-center space-x-2">
                         <img
                             loading="lazy"
                             className="w-12"
                             src="https://links.papareact.com/fdw"
                         />
-
-                    </div>}
+                        <p>Free Next-day Delivery</p>
+                    </div>)}
+                    
             </div>
         </div>
     )
