@@ -25,7 +25,9 @@ function Products({ id, title, price, description, category, image }) {
             price,
             description,
             category,
-            image
+            image,
+            hasPrime,
+            rating,
         };
 
         // Sending the product as an action to the REDUX store which is the basket slice

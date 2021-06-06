@@ -36,8 +36,14 @@ function Checkoutproduct({
                         />
                         <p>Free Next-day Delivery</p>
                     </div>)}
-                    
+
             </div>
+
+            <div className="flex flex-col justify-self-end my-auto space-y-2">
+                <botton className="button text-xs">Add To Basket</botton>
+                <botton className="button text-xs">Delete</botton>
+            </div>
+
         </div>
     )
 }
