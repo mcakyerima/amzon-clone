@@ -28,8 +28,13 @@ function Checkoutproduct({
             image,
             hasPrime,
         }
+        console.log(product.id)
         //use the dispatch to add the items we click to basketslice redux store
         dispatch(addToBasket(product))
+    }
+    //remove item from redux store
+    const removeItemFromBasket = () => {
+        dispatch(removeFromBasket({ id }))
     }
     return (
         <div className=" grid grid-cols-5 my-5">
@@ -60,7 +65,7 @@ function Checkoutproduct({
 
             <div className="flex flex-col justify-self-end my-auto space-y-2">
                 <botton className="button text-xs" onClick={addItemToBasket}>Add To Basket</botton>
-                <botton className="button text-xs">Delete</botton>
+                <botton className="button text-xs" onClick={removeItemFromBasket}>Delete</botton>
             </div>
 
         </div>
