@@ -48,7 +48,12 @@ function Checkout() {
 
                 {/* Right Hand Section */}
                 <div>
+                        {items.length > 0 && (
+                            <>
+                                <h2>SubTotal ({items.length} items)</h2>
+                            </>
 
+                        )}
                 </div>
             </main>
 

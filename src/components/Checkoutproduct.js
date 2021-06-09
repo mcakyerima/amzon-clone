@@ -67,7 +67,7 @@ function Checkoutproduct({
                 <botton className="button text-xs" onClick={addItemToBasket}>Add To Basket</botton>
                 <botton className="button text-xs" onClick={removeItemFromBasket}>Delete</botton>
             </div>
-
+         
         </div>
     )
 }
