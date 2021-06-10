@@ -64,8 +64,8 @@ function Checkoutproduct({
             </div>
 
             <div className="flex flex-col justify-self-end my-auto space-y-2">
-                <botton className="button text-xs" onClick={addItemToBasket}>Add To Basket</botton>
-                <botton className="button text-xs" onClick={removeItemFromBasket}>Delete</botton>
+                <botton className="button text-xs cursor-pointer" onClick={addItemToBasket}>Add To Basket</botton>
+                <botton className="button text-xs cursor-pointer" onClick={removeItemFromBasket}>Delete</botton>
             </div>
          
         </div>
