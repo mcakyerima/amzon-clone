@@ -5,10 +5,19 @@ import { useSelector } from "react-redux";
 import { selectItems } from "../slices/basketSlice";
 import { useSession } from "next-auth/client";
 import Currency from "react-currency-formatter"
+import React, { useState, useEffect } from 'react';
 
 function Checkout() {
     const [session] = useSession()
     const items = useSelector(selectItems);
+    const [totalPrice , setTotalPrice] = useState(0)
+
+    const total = useEffect(() => {
+        const num = items.map((item, ind) => { return item.price }).reduce((accu , idx) => {return accu + idx }, 0)
+        const final = Math.round(num * 100) / 100
+        setTotalPrice(final)
+    }, [items])
+
     return (
         <div className="relative bg-gray-100">
             <div className="bg-gray-100 relative mb-1.5">
@@ -50,15 +59,17 @@ function Checkout() {
 
 
                 {/* Right Hand Section */}
-                <div className="bg-gray-200 min-w-min m-16 border shadow-sm m-0">
+                <div className="flex flex-col bg-white shadow-md p-10 m-0">
                     {items.length > 0 && (
-                        <div className="m-10">
-                            <h2 className="whitespace-nowrap">SubTotal ({items.length} items):
+                        <div className="">
+                            <h2 className="whitespace-nowrap">SubTotal ({items.length}{" "} items):{"  "}
                                 <span className="font-bold">
-                                    <Currency quantity={sum(items.price)} currency="NGN"/>
+                                    <Currency quantity={totalPrice} currency="NGN" />
                                 </span>
                             </h2>
-                            <button className={`button mt-2 ${!session &&
+                            <button
+                            disabled={!session}
+                            className={`button mt-2 min-w-full ${!session &&
                                 "from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed"}`}>
                                 {!session ? "Login to Checkout" : "Click to Checkout"}
                             </button>
