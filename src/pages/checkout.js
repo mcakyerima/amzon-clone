@@ -14,11 +14,11 @@ function Checkout() {
             <div className="bg-gray-100 relative mb-1.5">
                 <Header />
             </div>
-            <main className="lg:flex max-w-xl mx-auto mt-24">
+            <main className="lg:flex flex-grow p-15 mx-auto mt-24">
                 {/* left hand section */}
-                <div className="flex-grow-2 m-5 shadow-sm ">
+                <div className="lg:min-w-min  flex-grow m-5 shadow-sm ">
                     <Image src="https://links.papareact.com/ikj"
-                        width={1030}
+                        width={1080}
                         height={300}
                         objectFit="contain" />
 
@@ -50,19 +50,19 @@ function Checkout() {
 
 
                 {/* Right Hand Section */}
-                <div>
+                <div className="bg-gray-200 min-w-min m-16 border shadow-sm m-0">
                     {items.length > 0 && (
-                        <>
+                        <div className="m-10">
                             <h2 className="whitespace-nowrap">SubTotal ({items.length} items):
                                 <span className="font-bold">
-                                    <Currency />
+                                    <Currency quantity={sum(items.price)} currency="NGN"/>
                                 </span>
                             </h2>
                             <button className={`button mt-2 ${!session &&
                                 "from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed"}`}>
                                 {!session ? "Login to Checkout" : "Click to Checkout"}
                             </button>
-                        </>
+                        </div>
 
                     )}
                 </div>

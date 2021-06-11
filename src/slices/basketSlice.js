@@ -32,7 +32,7 @@ export const basketSlice = createSlice({
   }
 });
 
-//actions callers functions in basket
+//actions caller functions in basket
 export const { addToBasket, removeFromBasket } = basketSlice.actions;
 
 // Selectors - This is how we pull information from the Global store slice
