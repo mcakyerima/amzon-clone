@@ -10,17 +10,17 @@ import React, { useState, useEffect } from 'react';
 function Checkout() {
     const [session] = useSession()
     const items = useSelector(selectItems);
-    const [totalPrice , setTotalPrice] = useState(0)
+    const [totalPrice, setTotalPrice] = useState(0)
 
     const total = useEffect(() => {
-        const num = items.map((item, ind) => { return item.price }).reduce((accu , idx) => {return accu + idx }, 0)
+        const num = items.map((item, ind) => { return item.price }).reduce((accu, idx) => { return accu + idx }, 0)
         const final = Math.round(num * 100) / 100
         setTotalPrice(final)
     }, [items])
 
     return (
         <div className="relative bg-gray-100">
-            <div className="bg-gray-100 relative mb-1.5">
+            <div className="bg-gray-100 relative mb-10">
                 <Header />
             </div>
             <main className="lg:flex flex-grow p-15 mx-auto mt-24">
@@ -59,20 +59,21 @@ function Checkout() {
 
 
                 {/* Right Hand Section */}
-                <div className="flex flex-col bg-white shadow-md p-10 m-0">
+                <div className="flex flex-col lg:sticky lg:min-h-screen lg:pb-20  lg:self-start lg:-top-0 bg-white shadow-md p-10">
                     {items.length > 0 && (
                         <div className="">
-                            <h2 className="whitespace-nowrap">SubTotal ({items.length}{" "} items):{"  "}
+                            <h2 className="whitespace-nowrap -top-0">SubTotal ({items.length}{" "} items):{"  "}
                                 <span className="font-bold">
                                     <Currency quantity={totalPrice} currency="NGN" />
                                 </span>
                             </h2>
                             <button
-                            disabled={!session}
-                            className={`button mt-2 min-w-full ${!session &&
-                                "from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed"}`}>
+                                disabled={!session}
+                                className={`button mt-2  min-w-full ${!session &&
+                                    "from-gray-300 to-gray-500 border-gray-200 text-gray-300 cursor-not-allowed"}`}>
                                 {!session ? "Login to Checkout" : "Click to Checkout"}
                             </button>
+                           
                         </div>
 
                     )}
